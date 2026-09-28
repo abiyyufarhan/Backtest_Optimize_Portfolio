@@ -73,19 +73,22 @@ Merumuskan masalah alokasi aset dan pengujian sinyal dengan kontrol terhadap bia
 
 ### Tabel metrik out-of-sample
 
-Angka final sengaja tidak diisi sebelum artefak evaluasi dijalankan. Ini mencegah README memuat angka in-sample atau angka yang tidak dapat direproduksi. Setelah `notebooks/10_evaluation.ipynb` selesai, tabel ini dapat diisi dari `data/processed/evaluation_metrics_all.csv`.
+Hasil di bawah diperoleh dari `data/processed/evaluation_metrics_all.csv` pada baseline net transaction cost 1.0x (fee beli 0,15%, fee jual 0,25%, dan slippage 0,05%) serta benchmark pembanding:
 
 | Portfolio/strategi | CAGR | Vol. tahunan | Sharpe | Sortino | Max Drawdown | Calmar | Status |
 |---|---:|---:|---:|---:|---:|---:|---|
-| MA 50/200 | — | — | — | — | — | — | Jalankan evaluasi |
-| Mean Reversion BB-RSI | — | — | — | — | — | — | Jalankan evaluasi |
-| Momentum 12-1 | — | — | — | — | — | — | Jalankan evaluasi |
-| ML signal | — | — | — | — | — | — | Jalankan evaluasi |
-| Max Sharpe | — | — | — | — | — | — | Jalankan evaluasi |
-| Minimum Volatility | — | — | — | — | — | — | Jalankan evaluasi |
-| HRP | — | — | — | — | — | — | Jalankan evaluasi |
-| Equal-weight 15 saham | — | — | — | — | — | — | Benchmark |
-| LQ45 | — | — | — | — | — | — | Benchmark |
+| MA 50/200 | 3,84% | 19,62% | 0,0445 | 0,0645 | -47,00% | 0,0816 | Evaluated (Net 1.0x) |
+| Mean Reversion BB-RSI | 0,50% | 27,10% | -0,0236 | -0,0347 | -55,92% | 0,0090 | Evaluated (Net 1.0x) |
+| Momentum 12-1 | 3,16% | 22,77% | 0,0389 | 0,0568 | -50,33% | 0,0629 | Evaluated (Net 1.0x) |
+| ML signal (Random Forest) | 0,11% | 13,78% | -0,2719 | -0,3961 | -38,96% | 0,0029 | Evaluated (Net 1.0x) |
+| ML signal (Naive Majority) | 5,91% | 17,34% | 0,1407 | 0,2037 | -44,08% | 0,1342 | Evaluated (Net 1.0x) |
+| ML signal (Logistic Regression) | -1,05% | 11,63% | -0,4462 | -0,6563 | -40,78% | -0,0258 | Evaluated (Net 1.0x) |
+| ML signal (XGBoost) | -3,07% | 13,48% | -0,5202 | -0,7450 | -42,88% | -0,0715 | Evaluated (Net 1.0x) |
+| Max Sharpe | -0,14% | 20,14% | -0,1452 | -0,2096 | -42,73% | -0,0032 | Evaluated (Net 1.0x) |
+| Minimum Volatility | 2,82% | 15,98% | -0,0473 | -0,0691 | -37,36% | 0,0754 | Evaluated (Net 1.0x) |
+| HRP | 4,24% | 16,56% | 0,0429 | 0,0619 | -42,19% | 0,1004 | Evaluated (Net 1.0x) |
+| Equal-weight 15 saham | 10,60% | 20,82% | 0,3569 | 0,5171 | -46,84% | 0,2263 | Benchmark |
+| LQ45 | -3,93% | 20,66% | -0,3231 | -0,4484 | -53,45% | -0,0735 | Benchmark |
 
 Snapshot filter kualitas fundamental yang sudah tersedia menempatkan KLBF, ANTM, dan PTBA sebagai tiga teratas. Ini adalah ranking statis kondisi 2026, bukan sinyal historis dan tidak boleh dipakai untuk backtest ke masa lalu.
 
@@ -115,33 +118,5 @@ Kelemahan utama:
 
 ```bash
 python -m venv .venv
-.venv\\Scripts\\activate        # Windows
+.venv\Scripts\activate        # Windows
 pip install -r requirements.txt
-```
-
-Urutan kerja yang disarankan:
-
-1. Jalankan `notebooks/01_data_understanding.ipynb`.
-2. Jalankan `notebooks/02_cleaning.ipynb`.
-3. Jalankan `src/build_master.py` atau cell build master terkait.
-4. Jalankan `notebooks/04_eda.ipynb` dan `notebooks/07_ml_signal.ipynb`.
-5. Jalankan `notebooks/09_portfolio_optimization.ipynb`.
-6. Jalankan `notebooks/10_evaluation.ipynb` untuk menghasilkan tabel evaluasi.
-7. Jalankan dashboard:
-
-```bash
-streamlit run dashboard/app.py
-```
-
-Dashboard mengharapkan artefak precomputed seperti `backtest_equity.csv`, `backtest_metrics.csv`, dan `backtest_weights.csv` di `data/processed`. Nama file alternatif didukung di loader `dashboard/app.py`.
-
-## Struktur project
-
-```text
-data/raw/          # data mentah, tidak diubah
-data/processed/    # data bersih, master, log, dan artefak hasil
-notebooks/         # eksplorasi, cleaning, EDA, ML, optimasi, evaluasi
-src/               # cleaning, feature, strategy, backtester
-dashboard/         # Streamlit app
-reports/figures/   # gambar yang dirujuk README
-```
