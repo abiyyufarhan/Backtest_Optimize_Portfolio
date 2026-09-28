@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="490" viewBox="0 0 840 490">
+  <rect width="840" height="490" fill="#ffffff"/>
+  <text x="70" y="28" font-family="Arial" font-size="18" font-weight="bold">Marker Rezim Makro</text>
+  <text x="70" y="46" font-family="Arial" font-size="11" fill="#666">BI Rate dan rata-rata PMI-BI tahunan; penanda konteks, bukan sinyal trading.</text>
+  <rect x="350" y="50" width="70" height="350" fill="#f5d6d6" opacity="0.65"/><rect x="490" y="50" width="70" height="350" fill="#f6e6b5" opacity="0.65"/><rect x="700" y="50" width="70" height="350" fill="#d9e8f5" opacity="0.65"/>
+  <line x1="70" y1="400" x2="770" y2="400" stroke="#999"/><line x1="70" y1="50" x2="70" y2="400" stroke="#999"/>
+  <line x1="70" y1="225" x2="770" y2="225" stroke="#e5e5e5"/><line x1="70" y1="100" x2="770" y2="100" stroke="#e5e5e5"/>
+  <text x="28" y="405" font-family="Arial" font-size="11">3</text><text x="28" y="230" font-family="Arial" font-size="11">4.75</text><text x="28" y="105" font-family="Arial" font-size="11">6.5</text>
+  <polyline fill="none" stroke="#1f77b4" stroke-width="3" points="70.0,225.0 140.0,275.0 210.0,100.0 280.0,200.0 350.0,325.0 420.0,350.0 490.0,150.0 560.0,100.0 630.0,100.0 700.0,225.0 770.0,125.0"/>
+  <polyline fill="none" stroke="#2ca02c" stroke-width="3" points="70.0,174.1 140.0,149.2 210.0,125.0 280.0,115.0 350.0,362.7 420.0,164.5 490.0,113.3 560.0,124.3 630.0,120.6 700.0,131.2 770.0,126.3"/>
+  <g font-family="Arial" font-size="10" fill="#333"><text x="62" y="420">2016</text><text x="202" y="420">2018</text><text x="342" y="420">2020</text><text x="482" y="420">2022</text><text x="622" y="420">2024</text><text x="748" y="420">2026</text></g>
+  <line x1="610" y1="32" x2="635" y2="32" stroke="#1f77b4" stroke-width="3"/><text x="642" y="36" font-family="Arial" font-size="11">BI Rate</text>
+  <line x1="695" y1="32" x2="720" y2="32" stroke="#2ca02c" stroke-width="3"/><text x="727" y="36" font-family="Arial" font-size="11">PMI-BI</text>
+  <text x="358" y="70" font-family="Arial" font-size="10" fill="#884444">2020 krisis</text><text x="496" y="70" font-family="Arial" font-size="10" fill="#806b24">2022 rate hike</text><text x="704" y="70" font-family="Arial" font-size="10" fill="#35627d">2025–26</text>
+  <text x="70" y="455" font-family="Arial" font-size="11" fill="#666">Sumber: data/processed/bi_rate.csv dan pmi_bi.csv. PMI axis memakai skala visual tersendiri.</text>
+</svg>
